@@ -272,6 +272,146 @@ header.scrolled{background:rgba(253,248,240,.92);backdrop-filter:blur(16px);box-
   .gallery-grid{grid-template-columns:minmax(0,1fr);max-width:420px;margin-inline:auto}
 }
 
+
+/* ===== GALERI SLIDESHOW ===== */
+.gallery-slider{
+  position:relative;
+  max-width:900px;
+  margin:0 auto;
+  overflow:hidden;
+  border-radius:24px;
+  background:#eadcc8;
+  border:10px solid rgba(255,255,255,.78);
+  box-shadow:var(--shadow-lg);
+}
+.gallery-slides{
+  display:flex;
+  width:100%;
+  transition:transform .7s cubic-bezier(.22,.75,.25,1);
+  will-change:transform;
+}
+.gallery-slide{
+  flex:0 0 100%;
+  width:100%;
+  height:clamp(300px,58vw,590px);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:linear-gradient(145deg,#f3e7d5,#dfc6a5);
+  cursor:zoom-in;
+}
+.gallery-slide img{
+  display:block;
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  transition:transform .35s ease;
+}
+.gallery-slide:hover img{transform:scale(1.012)}
+.gallery-arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:5;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.5);
+  border-radius:50%;
+  background:rgba(36,19,9,.72);
+  color:#fff;
+  font-size:30px;
+  line-height:1;
+  cursor:pointer;
+  transition:background .25s,transform .25s;
+}
+.gallery-arrow:hover{background:var(--amber-deep);transform:translateY(-50%) scale(1.07)}
+.gallery-prev{left:18px}
+.gallery-next{right:18px}
+.gallery-dots{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:9px;
+  margin:25px auto 0;
+}
+.gallery-dot{
+  width:9px;
+  height:9px;
+  padding:0;
+  border:0;
+  border-radius:99px;
+  background:var(--brown-300);
+  cursor:pointer;
+  transition:width .25s,background .25s;
+}
+.gallery-dot.active{width:28px;background:var(--amber-deep)}
+/* Slideshow di area poster utama (hero) */
+.hero-photo{display:block}
+.hero-photo .hero-gallery-slider{
+  width:100%;
+  height:100%;
+  max-width:none;
+  margin:0;
+  border:0;
+  border-radius:16px;
+  box-shadow:none;
+  background:transparent;
+}
+.hero-photo .gallery-slides,
+.hero-photo .gallery-slide{height:100%;min-height:0}
+.hero-photo .gallery-slide{flex:0 0 100%}
+.hero-photo .gallery-slide img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:10px;
+}
+.hero-photo .gallery-arrow{
+  width:42px;
+  height:42px;
+  font-size:26px;
+}
+.hero-photo .gallery-prev{left:8px}
+.hero-photo .gallery-next{right:8px}
+.hero-photo .hero-gallery-dots{
+  position:absolute;
+  z-index:6;
+  left:0;
+  right:0;
+  bottom:12px;
+  margin:0;
+  gap:7px;
+}
+.hero-photo .hero-gallery-dots .gallery-dot{
+  background:rgba(90,58,34,.45);
+  border:1px solid rgba(255,255,255,.8);
+}
+.hero-photo .hero-gallery-dots .gallery-dot.active{
+  width:24px;
+  background:var(--amber-deep);
+}
+.hero-photo .photo-caption{display:none}
+
+.gallery-caption{
+  max-width:700px;
+  margin:24px auto 0;
+  text-align:center;
+}
+.gallery-caption h3{font-size:clamp(1.2rem,2.5vw,1.55rem);margin-bottom:7px}
+.gallery-caption p{color:var(--text-soft);font-size:.9rem}
+@media(max-width:700px){
+  .gallery-slider{border-width:6px;border-radius:17px}
+  .gallery-slide{height: min(72vw,390px);min-height:250px}
+  .gallery-arrow{width:39px;height:39px;font-size:24px}
+  .gallery-prev{left:10px}
+  .gallery-next{right:10px}
+  .gallery-dots{margin-top:19px}
+  .gallery-caption{margin-top:18px;padding-inline:10px}
+}
+
 /* ===== FOOTER ===== */
 footer{background:var(--brown-900);color:rgba(253,248,240,.7);padding:70px 0 28px;border-top:1px solid rgba(253,248,240,.1);position:relative;overflow:hidden}
 footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(240,160,75,.08),transparent 70%)}
@@ -447,18 +587,38 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
     </div>
     <div class="hero-visual reveal">
       <div class="hero-photo">
-        <!-- Poster produk: klik untuk melihat gambar secara utuh -->
-        <img
-          src="koma.jpeg"
-          class="art hero-poster"
-          alt="Poster Gula Lontar Panyawakang"
-          loading="eager"
-          onclick="openImagePreview(this.src)"
-          role="button"
-          tabindex="0"
-          aria-label="Perbesar poster Gula Lontar"
-          onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openImagePreview(this.src)}"
-        >
+        <!-- Galeri slideshow otomatis di posisi poster -->
+        <div class="gallery-slider hero-gallery-slider" id="gallerySlider">
+          <div class="gallery-slides" id="gallerySlides">
+            <div class="gallery-slide">
+              <img src="koma.jpeg" alt="Poster Gula Lontar Panyawakkang"
+                   loading="eager" onclick="openImagePreview(this.src)">
+            </div>
+            <div class="gallery-slide">
+              <img src="koma2.jpeg" alt="Produk Gula Lontar"
+                   loading="lazy" onclick="openImagePreview(this.src)">
+            </div>
+            <div class="gallery-slide">
+              <img src="koma3.jpeg" alt="Proses Produksi Gula Lontar"
+                   loading="lazy" onclick="openImagePreview(this.src)">
+            </div>
+            <div class="gallery-slide">
+              <img src="koma4.jpeg" alt="Dokumentasi Gula Lontar Panyawakkang"
+                   loading="lazy" onclick="openImagePreview(this.src)">
+            </div>
+          </div>
+
+          <button class="gallery-arrow gallery-prev" type="button"
+                  aria-label="Foto sebelumnya" onclick="changeGallery(-1)">‹</button>
+          <button class="gallery-arrow gallery-next" type="button"
+                  aria-label="Foto berikutnya" onclick="changeGallery(1)">›</button>
+          <div class="gallery-dots hero-gallery-dots" id="galleryDots"
+               aria-label="Pilih foto galeri"></div>
+        </div>
+        <div class="photo-caption">
+          <b id="galleryTitle">Gula Lontar Panyawakkang</b>
+          <span id="galleryDescription">Manis alami dari nira lontar pilihan, diolah dengan kearifan lokal Desa Taring.</span>
+        </div>
         <div class="photo-caption">
           <b>Gula Lontar Panyawakang</b>
           Kearifan lokal dari perbukitan Desa Taring, Kabupaten Gowa.
@@ -668,40 +828,7 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
 </section>
 
 
-<!-- GALERI -->
-<section class="section-pad gallery-section" id="galeri">
-  <div class="container">
-    <div class="gallery-heading reveal">
-      <div>
-        <div class="eyebrow">Galeri Kami</div>
-        <h2 class="section-title">Cerita Manis dalam Setiap Karya</h2>
-        <p class="section-sub">Lihat lebih dekat produk Gula Lontar Panyawakkang. Galeri ini akan terus diperbarui dengan dokumentasi produk dan kegiatan produksi kami.</p>
-      </div>
-      <div class="gallery-count">📷 1 Foto Koleksi</div>
-    </div>
-
-    <div class="gallery-grid">
-      <article class="gallery-card reveal"
-        onclick="openImagePreview('koma.jpeg')"
-        role="button"
-        tabindex="0"
-        aria-label="Perbesar poster Gula Lontar Panyawakkang"
-        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImagePreview('koma.jpeg')}">
-        <div class="gallery-image-wrap">
-          <img src="koma.jpeg" alt="Poster produk Gula Lontar Panyawakkang" loading="lazy">
-          <span class="gallery-zoom" aria-hidden="true">⌕</span>
-        </div>
-        <div class="gallery-info">
-          <span>Produk Unggulan</span>
-          <h3>Gula Lontar Panyawakkang</h3>
-          <p>Manis alami dari nira lontar pilihan, diolah dengan kearifan lokal Desa Taring.</p>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<!-- TESTIMONI -->
+<!-- Galeri foto sudah dipindahkan ke bagian utama (hero) -->\n\n<!-- TESTIMONI -->
 <section class="section-pad testi" id="testimoni">
   <div class="container">
     <div class="reveal">
@@ -798,6 +925,7 @@ function openImagePreview(src) {
   lightbox.classList.add('open');
   lightbox.setAttribute('aria-hidden', 'false');
   document.body.style.overflow = 'hidden';
+  if (window.stopGalleryTimer) window.stopGalleryTimer();
 }
 
 function closeImagePreview() {
@@ -805,11 +933,117 @@ function closeImagePreview() {
   lightbox.classList.remove('open');
   lightbox.setAttribute('aria-hidden', 'true');
   document.body.style.overflow = '';
+  if (window.startGalleryTimer) window.startGalleryTimer();
 }
 
 document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape') closeImagePreview();
 });
+
+
+/* ===== GALERI SLIDESHOW OTOMATIS ===== */
+const gallerySlides = document.getElementById('gallerySlides');
+const galleryDots = document.getElementById('galleryDots');
+const galleryTitle = document.getElementById('galleryTitle');
+const galleryDescription = document.getElementById('galleryDescription');
+const galleryCount = document.getElementById('galleryCount');
+
+const galleryCaptions = [
+  {
+    title: 'Gula Lontar Panyawakkang',
+    description: 'Manis alami dari nira lontar pilihan, diolah dengan kearifan lokal Desa Taring.'
+  },
+  {
+    title: 'Produk Gula Lontar',
+    description: 'Produk unggulan hasil olahan masyarakat Panyawakkang.'
+  },
+  {
+    title: 'Proses Produksi',
+    description: 'Dokumentasi proses pengolahan gula lontar.'
+  },
+  {
+    title: 'Potensi Desa Taring',
+    description: 'Mengangkat kearifan lokal dan potensi produk desa.'
+  }
+];
+
+let currentGalleryIndex = 0;
+let galleryInterval = null;
+const galleryTotal = gallerySlides ? gallerySlides.children.length : 0;
+
+if (galleryCount) {
+  galleryCount.textContent = `📷 ${galleryTotal} Foto Koleksi`;
+}
+
+if (gallerySlides && galleryTotal > 0) {
+  for (let i = 0; i < galleryTotal; i++) {
+    const dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'gallery-dot';
+    dot.setAttribute('aria-label', `Tampilkan foto ${i + 1}`);
+    dot.addEventListener('click', () => {
+      showGallery(i);
+      resetGalleryTimer();
+    });
+    galleryDots.appendChild(dot);
+  }
+
+  function showGallery(index) {
+    currentGalleryIndex = (index + galleryTotal) % galleryTotal;
+    gallerySlides.style.transform = `translateX(-${currentGalleryIndex * 100}%)`;
+
+    const caption = galleryCaptions[currentGalleryIndex] || {
+      title: `Foto Galeri ${currentGalleryIndex + 1}`,
+      description: 'Dokumentasi Gula Lontar Panyawakkang.'
+    };
+
+    galleryTitle.textContent = caption.title;
+    galleryDescription.textContent = caption.description;
+
+    galleryDots.querySelectorAll('.gallery-dot').forEach((dot, i) => {
+      dot.classList.toggle('active', i === currentGalleryIndex);
+      dot.setAttribute('aria-current', i === currentGalleryIndex ? 'true' : 'false');
+    });
+  }
+
+  function changeGallery(direction) {
+    showGallery(currentGalleryIndex + direction);
+    resetGalleryTimer();
+  }
+
+  function startGalleryTimer() {
+    if (galleryInterval || document.hidden ||
+        document.getElementById('imageLightbox').classList.contains('open')) return;
+
+    galleryInterval = setInterval(() => {
+      showGallery(currentGalleryIndex + 1);
+    }, 3000);
+  }
+
+  function stopGalleryTimer() {
+    clearInterval(galleryInterval);
+    galleryInterval = null;
+  }
+
+  function resetGalleryTimer() {
+    stopGalleryTimer();
+    startGalleryTimer();
+  }
+
+  // Fungsi dibuat global agar dapat dipanggil dari tombol HTML.
+  window.changeGallery = changeGallery;
+  window.startGalleryTimer = startGalleryTimer;
+  window.stopGalleryTimer = stopGalleryTimer;
+
+  showGallery(0);
+  startGalleryTimer();
+
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopGalleryTimer();
+    else startGalleryTimer();
+  });
+}
+
 
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));

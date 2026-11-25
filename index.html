@@ -9,6 +9,32 @@
 <title>Gula Lontar Panyawakang — Manis Alami dari Desa Taring</title>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
 <style>
+
+
+
+/* ===== VIDEO TENTANG GULA LONTAR ===== */
+.about-visual .about-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  border-radius: inherit;
+  background: #241309;
+}
+
+/* Tampilan video di HP */
+@media(max-width:768px) {
+  .about-visual {
+    aspect-ratio: 1 / 1.02;
+  }
+
+  .about-visual .about-video {
+    width: 100%;
+    height: 100%;
+  }
+}
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
   --brown-900:#241309;--brown-800:#3a2112;--brown-700:#5a3a22;--brown-500:#8a5a33;
@@ -591,19 +617,27 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
         <div class="gallery-slider hero-gallery-slider" id="gallerySlider">
           <div class="gallery-slides" id="gallerySlides">
             <div class="gallery-slide">
-              <img src="koma.jpeg" alt="Poster Gula Lontar Panyawakkang"
+              <img src="1.jpeg" alt="Poster Gula Lontar Panyawakkang"
                    loading="eager" onclick="openImagePreview(this.src)">
             </div>
             <div class="gallery-slide">
-              <img src="koma2.jpeg" alt="Produk Gula Lontar"
+              <img src="2.jpeg" alt="Produk Gula Lontar"
                    loading="lazy" onclick="openImagePreview(this.src)">
             </div>
             <div class="gallery-slide">
-              <img src="koma3.jpeg" alt="Proses Produksi Gula Lontar"
+              <img src="3.jpeg" alt="Proses Produksi Gula Lontar"
                    loading="lazy" onclick="openImagePreview(this.src)">
             </div>
             <div class="gallery-slide">
-              <img src="koma4.jpeg" alt="Dokumentasi Gula Lontar Panyawakkang"
+              <img src="4.jpeg" alt="Dokumentasi Gula Lontar Panyawakkang"
+                   loading="lazy" onclick="openImagePreview(this.src)">
+            </div>
+             <div class="gallery-slide">
+              <img src="5.jpeg" alt="Dokumentasi Gula Lontar Panyawakkang"
+                   loading="lazy" onclick="openImagePreview(this.src)">
+            </div>
+             <div class="gallery-slide">
+              <img src="6.jpeg" alt="Dokumentasi Gula Lontar Panyawakkang"
                    loading="lazy" onclick="openImagePreview(this.src)">
             </div>
           </div>
@@ -647,12 +681,62 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
 </div>
 
 <!-- TENTANG -->
+
 <section class="section-pad" id="tentang">
   <div class="container about-grid">
+
     <div class="about-visual reveal">
-      <!-- ILUSTRASI ANIMASI TUNGKU TRADISIONAL -->
-      <svg class="art" viewBox="0 0 400 410" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-        <defs>
+
+      <!-- VIDEO PROSES PEMBUATAN GULA LONTAR -->
+      <video
+        class="about-video"
+        controls
+        playsinline
+        preload="metadata"
+        poster="1.jpeg"
+      >
+        <source src="proses-gula-lontar.mp4" type="video/mp4">
+        Browser Anda tidak mendukung pemutaran video.
+      </video>
+
+      <div class="about-badge">
+        <b>2025</b>
+        Produk Unggulan Desa
+      </div>
+
+    </div>
+
+    <div class="about-content reveal">
+      <div class="eyebrow">Tentang Kami</div>
+      <h2 class="section-title">
+        Dari Penyadap Nira, Untuk Kejayaan Desa
+      </h2>
+
+      <p>
+        Gula lontar kami berasal dari Dusun Panyawakang,
+        Desa Taring, Kecamatan Biring Bulu, Kabupaten Gowa.
+        Pohon lontar telah lama tumbuh alami di perbukitan
+        desa dan diwariskan turun-temurun sebagai sumber
+        penghidupan masyarakat.
+      </p>
+
+      <p>
+        Kami berkomitmen mengangkat gula lontar dari produk
+        komoditas menjadi <b>produk unggulan desa</b> yang
+        bernilai tambah, higienis, dan berdaya saing.
+      </p>
+
+      <div class="about-features">
+        <div class="feat"><span class="fi">🌱</span><div><b>Alami</b><span>Dari nira lontar segar</span></div></div>
+        <div class="feat"><span class="fi">🧼</span><div><b>Higienis</b><span>Standar sanitasi sederhana</span></div></div>
+        <div class="feat"><span class="fi">📦</span><div><b>Berkemasan</b><span>Label & merek desa</span></div></div>
+        <div class="feat"><span class="fi">🤝</span><div><b>Pemberdayaan</b><span>Menguatkan UMKM lokal</span></div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
           <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2dcc0"/><stop offset="1" stop-color="#a67546"/></linearGradient>
           <linearGradient id="wok" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a4a"/><stop offset="1" stop-color="#1c1c1c"/></linearGradient>
           <radialGradient id="nira" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#e8a94e"/><stop offset="1" stop-color="#a85a12"/></radialGradient>

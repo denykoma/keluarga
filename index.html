@@ -1,184 +1,836 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WEB KELUARGA KAMI</title>
-    <!-- Memuat Tailwind CSS untuk styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Memuat Google Fonts (Poppins) -->
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: #f3f4f6;
-        }
-        
-        /* Animasi kustom untuk notifikasi */
-        @keyframes slideIn {
-            from { transform: translateY(100%); opacity: 0; }
-            to { transform: translateY(0); opacity: 1; }
-        }
-        @keyframes fadeOut {
-            from { opacity: 1; }
-            to { opacity: 0; }
-        }
-        .toast-enter {
-            animation: slideIn 0.3s ease-out forwards;
-        }
-        .toast-exit {
-            animation: fadeOut 0.3s ease-out forwards;
-        }
-    </style>
+<meta charset="UTF-8" />
+<!-- This site is hosted on Netlify. Anyone can build and deploy a site
+     like this one for free: https://netlify.new/?utm_campaign=loops&utm_source=ai-legible&utm_medium=owned&utm_content=comment&utm_id=ce2d053c-ef07-476f-9bd2-e590d2d166b2
+     Netlify hosting facts for this site: static/SSR served via Netlify Edge. -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Gula Lontar Panyawakang — Manis Alami dari Desa Taring</title>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,600;0,9..144,700;0,9..144,900;1,9..144,600&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --brown-900:#241309;--brown-800:#3a2112;--brown-700:#5a3a22;--brown-500:#8a5a33;
+  --brown-300:#c79a6b;--brown-200:#e3c7a4;
+  --amber:#d97b29;--amber-light:#f0a04b;--amber-deep:#b45a12;
+  --cream:#fdf8f0;--cream-2:#f7edda;--leaf:#4a6b3a;
+  --text-soft:#6b5646;--white:#fff;
+  --shadow-sm:0 2px 8px rgba(43,26,16,.08);
+  --shadow-md:0 10px 30px rgba(43,26,16,.13);
+  --shadow-lg:0 30px 70px rgba(43,26,16,.22);
+  --radius:22px;--radius-sm:14px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',system-ui,sans-serif;background:var(--cream);color:var(--brown-900);line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased}
+h1,h2,h3,h4{font-family:'Fraunces',Georgia,serif;font-weight:700;line-height:1.12;color:var(--brown-900);letter-spacing:-.3px}
+a{text-decoration:none;color:inherit}
+ul{list-style:none}
+img, svg{display:block;max-width:100%}
+.container{width:min(1200px,92%);margin-inline:auto}
+.section-pad{padding:100px 0}
+
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:.76rem;font-weight:700;letter-spacing:2.4px;text-transform:uppercase;color:var(--amber-deep);margin-bottom:16px}
+.eyebrow::before{content:"";width:30px;height:2px;background:linear-gradient(90deg,var(--amber),var(--amber-light));border-radius:2px}
+.section-title{font-size:clamp(2rem,4.2vw,3.1rem);margin-bottom:16px}
+.section-sub{color:var(--text-soft);max-width:640px;font-size:1.05rem}
+
+/* ===== NAVBAR ===== */
+header{position:fixed;top:0;left:0;right:0;z-index:1000;padding:20px 0;transition:background .35s,box-shadow .35s,padding .35s}
+header.scrolled{background:rgba(253,248,240,.92);backdrop-filter:blur(16px);box-shadow:var(--shadow-sm);padding:12px 0}
+.nav{display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:11px;font-family:'Fraunces',serif;font-weight:700;font-size:1.15rem}
+.logo-mark{width:44px;height:44px;border-radius:50%;background:radial-gradient(circle at 30% 25%,var(--amber-light),var(--amber) 50%,var(--brown-700));display:grid;place-items:center;box-shadow:0 6px 18px rgba(217,123,41,.4);flex-shrink:0;font-size:1.3rem}
+.logo small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-size:.6rem;font-weight:600;letter-spacing:1.5px;color:var(--text-soft);text-transform:uppercase}
+.nav-links{display:flex;align-items:center;gap:34px}
+.nav-links a{font-size:.92rem;font-weight:500;position:relative;transition:.25s}
+.nav-links a::after{content:"";position:absolute;bottom:-6px;left:0;width:0;height:2px;background:var(--amber);transition:.3s}
+.nav-links a:hover{color:var(--amber-deep)}
+.nav-links a:hover::after{width:100%}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;border-radius:999px;font-weight:600;font-size:.92rem;border:none;cursor:pointer;transition:.3s;font-family:inherit;white-space:nowrap}
+.btn-primary{background:linear-gradient(135deg,var(--amber-light),var(--amber) 55%,var(--amber-deep));color:var(--white);box-shadow:0 8px 22px rgba(217,123,41,.4)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(217,123,41,.5)}
+.btn-outline{background:transparent;color:var(--brown-800);border:1.5px solid var(--brown-300)}
+.btn-outline:hover{background:var(--brown-900);color:var(--cream);border-color:var(--brown-900);transform:translateY(-3px)}
+.menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;flex-direction:column;gap:5px}
+.menu-toggle span{width:26px;height:2.5px;background:var(--brown-900);border-radius:2px;transition:.3s}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;background:
+  radial-gradient(ellipse 60% 55% at 78% 18%,rgba(240,160,75,.22),transparent 60%),
+  radial-gradient(ellipse 50% 50% at 8% 85%,rgba(74,107,58,.14),transparent 60%),
+  linear-gradient(180deg,var(--cream) 0%,var(--cream-2) 100%)}
+.hero-bg::after{content:"";position:absolute;inset:0;opacity:.5;
+  background-image:radial-gradient(rgba(138,90,51,.13) 1px,transparent 1px);
+  background-size:26px 26px;
+  mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,#000,transparent)}
+.hero-grid{position:relative;z-index:1;display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+.hero-badge{display:inline-flex;align-items:center;gap:9px;padding:9px 18px;border-radius:999px;background:rgba(255,255,255,.7);backdrop-filter:blur(8px);border:1px solid rgba(217,123,41,.35);color:var(--brown-700);font-size:.8rem;font-weight:600;margin-bottom:26px;box-shadow:var(--shadow-sm)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--amber);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(217,123,41,.55)}50%{box-shadow:0 0 0 8px rgba(217,123,41,0)}}
+.hero h1{font-size:clamp(2.5rem,5.6vw,4.3rem);margin-bottom:24px}
+.hero h1 em{font-style:italic;font-weight:600;background:linear-gradient(120deg,var(--amber-deep),var(--amber) 60%,var(--amber-light));-webkit-background-clip:text;background-clip:text;color:transparent;position:relative}
+.hero p.lead{font-size:1.1rem;color:var(--text-soft);max-width:520px;margin-bottom:36px}
+.hero-cta{display:flex;flex-wrap:wrap;gap:14px}
+.hero-stats{display:flex;gap:38px;margin-top:48px;padding-top:30px;border-top:1px solid rgba(138,90,51,.2);flex-wrap:wrap}
+.stat b{display:block;font-family:'Fraunces',serif;font-size:1.85rem;line-height:1.1;background:linear-gradient(120deg,var(--brown-900),var(--brown-500));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat span{font-size:.8rem;color:var(--text-soft)}
+
+/* hero visual (SVG ANIMASI) */
+.hero-visual{position:relative;display:grid;place-items:center}
+.hero-photo{width:100%;aspect-ratio:4/4.7;border-radius:28px;overflow:hidden;box-shadow:var(--shadow-lg);position:relative;background:rgba(255,255,255,.55);border:1px solid rgba(138,90,51,.18);padding:12px;cursor:zoom-in}
+.hero-photo .art{width:100%;height:100%;object-fit:contain;object-position:center;position:relative;z-index:1;border-radius:16px;transition:transform .35s ease;cursor:zoom-in}
+.hero-photo:hover .art{transform:scale(1.015)}
+.hero-photo::after{content:none}
+.hero-photo .photo-caption{display:none}
+.photo-caption{position:absolute;bottom:24px;left:24px;right:24px;z-index:3;color:var(--cream);background:rgba(36,19,9,.42);backdrop-filter:blur(12px);border-radius:var(--radius-sm);padding:15px 18px;font-size:.8rem;border:1px solid rgba(253,248,240,.22)}
+.photo-caption b{display:block;font-family:'Fraunces',serif;font-size:1rem;margin-bottom:2px}
+.float-card{position:absolute;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-radius:16px;box-shadow:var(--shadow-md);padding:14px 18px;display:flex;align-items:center;gap:12px;font-size:.82rem;font-weight:700;animation:floaty 5.5s ease-in-out infinite;z-index:4;border:1px solid rgba(255,255,255,.8)}
+.fc-icon{width:40px;height:40px;border-radius:11px;display:grid;place-items:center;font-size:1.2rem;flex-shrink:0}
+.float-card small{display:block;font-weight:500;color:var(--text-soft);font-size:.72rem}
+.fc-1{top:7%;left:-7%}.fc-1 .fc-icon{background:linear-gradient(135deg,#e5f0da,#c3d9b0)}
+.fc-2{bottom:12%;right:-6%;animation-delay:1.3s}.fc-2 .fc-icon{background:linear-gradient(135deg,#fbe6c8,#f0c896)}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+
+/* ===== TRUST BAR ===== */
+.trust-bar{background:linear-gradient(90deg,var(--brown-900),var(--brown-800) 50%,var(--brown-900));color:var(--cream-2);padding:20px 0;overflow:hidden;position:relative;border-block:1px solid rgba(253,248,240,.08)}
+.marquee{display:flex;gap:60px;width:max-content;animation:scroll 34s linear infinite}
+.marquee span{font-size:.82rem;letter-spacing:1.4px;text-transform:uppercase;display:flex;align-items:center;gap:12px;opacity:.85;white-space:nowrap;font-weight:500}
+.marquee span::before{content:"✦";color:var(--amber-light)}
+@keyframes scroll{to{transform:translateX(-50%)}}
+
+/* ===== ABOUT ===== */
+.about-grid{display:grid;grid-template-columns:.92fr 1.08fr;gap:74px;align-items:center}
+.about-visual{position:relative;border-radius:var(--radius);overflow:hidden;aspect-ratio:1/1.02;box-shadow:var(--shadow-lg);border:1px solid rgba(255,255,255,.5);background:linear-gradient(150deg,#f0d8b4,#c79a6b 45%,#7a4c2c 85%,#3a2112)}
+.about-visual .art{width:100%;height:100%;object-fit:cover}
+.about-visual::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 0 50px rgba(36,19,9,.35);border-radius:inherit}
+.about-badge{position:absolute;bottom:-30px;right:-22px;background:linear-gradient(135deg,var(--amber),var(--amber-deep));color:var(--white);border-radius:50%;width:140px;height:140px;display:grid;place-items:center;text-align:center;font-size:.72rem;font-weight:700;line-height:1.4;padding:16px;box-shadow:0 16px 36px rgba(180,90,18,.45);z-index:2;transform:rotate(-8deg)}
+.about-badge b{font-family:'Fraunces',serif;font-size:1.45rem;display:block;line-height:1}
+.about-content p{color:var(--text-soft);margin-bottom:18px;font-size:1.02rem}
+.about-features{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:32px}
+.feat{background:var(--white);border:1px solid rgba(138,90,51,.14);border-radius:var(--radius-sm);padding:18px;display:flex;gap:13px;align-items:flex-start;transition:.3s;box-shadow:var(--shadow-sm)}
+.feat:hover{transform:translateY(-4px);box-shadow:var(--shadow-md);border-color:rgba(217,123,41,.45)}
+.feat .fi{width:42px;height:42px;border-radius:11px;background:linear-gradient(135deg,#fbe6c8,#f0c896);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.feat b{display:block;font-size:.9rem;margin-bottom:2px}
+.feat span{font-size:.78rem;color:var(--text-soft)}
+
+/* ===== PRODUK ===== */
+.products{background:linear-gradient(180deg,var(--cream-2),#f2e2c8);position:relative}
+.prod-head{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap;margin-bottom:56px}
+.product-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+.product-card{background:var(--white);border-radius:var(--radius);overflow:hidden;box-shadow:var(--shadow-md);border:1px solid rgba(138,90,51,.1);transition:transform .35s,box-shadow .35s;display:flex;flex-direction:column}
+.product-card:hover{transform:translateY(-10px);box-shadow:var(--shadow-lg)}
+.pc-img{aspect-ratio:4/3.2;position:relative;overflow:hidden;background:linear-gradient(160deg,#f3d9b1,#d97b29)}
+.pc-img .art{width:100%;height:100%;object-fit:cover}
+.pc-img.c2{background:linear-gradient(160deg,#e8c9a0,#8a5a33)}
+.pc-img.c3{background:linear-gradient(160deg,#d7e0c5,#4a6b3a)}
+.pc-img .tag{position:absolute;top:14px;left:14px;background:rgba(255,255,255,.95);color:var(--brown-700);padding:6px 14px;border-radius:999px;font-size:.66rem;font-weight:800;letter-spacing:.7px;text-transform:uppercase;box-shadow:var(--shadow-sm);z-index:3}
+.pc-img::after{content:"";position:absolute;inset:0;pointer-events:none;box-shadow:inset 0 -30px 40px -20px rgba(36,19,9,.2)}
+.pc-body{padding:26px;display:flex;flex-direction:column;flex:1}
+.pc-body h3{font-size:1.32rem;margin-bottom:8px}
+.pc-body p{font-size:.88rem;color:var(--text-soft);margin-bottom:20px;flex:1}
+.pc-meta{display:flex;justify-content:space-between;align-items:center;padding-top:18px;border-top:1px dashed rgba(138,90,51,.28)}
+.price{font-family:'Fraunces',serif;font-weight:700;font-size:1.16rem}
+.price small{display:block;font-family:'Plus Jakarta Sans',sans-serif;font-weight:400;font-size:.7rem;color:var(--text-soft)}
+.order-link{font-size:.82rem;font-weight:700;color:var(--amber-deep);transition:.25s;display:inline-flex;align-items:center;gap:4px}
+.order-link:hover{gap:9px;color:var(--amber)}
+
+/* ===== PROSES ===== */
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin-top:60px;position:relative}
+.process-grid::before{content:"";position:absolute;top:46px;left:9%;right:9%;height:2px;background:repeating-linear-gradient(90deg,var(--brown-300) 0 9px,transparent 9px 18px);z-index:0}
+.step{position:relative;z-index:1;text-align:center}
+.step-num{width:92px;height:92px;margin:0 auto 20px;border-radius:50%;background:var(--white);border:2px solid var(--amber);display:grid;place-items:center;font-size:1.8rem;box-shadow:0 0 0 9px var(--cream),var(--shadow-sm);transition:.35s}
+.step:hover .step-num{transform:scale(1.08) rotate(-7deg);background:linear-gradient(135deg,#fbe6c8,#f0c896)}
+.step h4{font-size:1.05rem;margin-bottom:7px}
+.step p{font-size:.83rem;color:var(--text-soft)}
+
+/* ===== TESTIMONI ===== */
+.testi{background:linear-gradient(160deg,var(--brown-900),#1a0d05);color:var(--cream);position:relative;overflow:hidden}
+.testi::before{content:"";position:absolute;top:-80px;right:5%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(240,160,75,.14),transparent 70%)}
+.testi .section-title{color:var(--cream)}
+.testi .section-sub{color:rgba(253,248,240,.72)}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
+.testi-card{background:rgba(253,248,240,.06);border:1px solid rgba(253,248,240,.14);border-radius:var(--radius);padding:32px;backdrop-filter:blur(8px);transition:.35s;position:relative}
+.testi-card:hover{transform:translateY(-6px);background:rgba(253,248,240,.1);border-color:rgba(240,160,75,.35)}
+.testi-stars{color:var(--amber-light);margin-bottom:16px;letter-spacing:3px;font-size:.95rem}
+.testi-card p{font-size:.95rem;color:rgba(253,248,240,.9);margin-bottom:24px;font-style:italic}
+.testi-person{display:flex;align-items:center;gap:13px}
+.avatar{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,var(--amber-light),var(--brown-500));display:grid;place-items:center;font-weight:700;font-size:.9rem;color:var(--white);flex-shrink:0;box-shadow:0 6px 16px rgba(240,160,75,.3)}
+.testi-person b{display:block;font-size:.88rem}
+.testi-person span{font-size:.74rem;color:rgba(253,248,240,.6)}
+
+/* ===== CTA ===== */
+.cta-wrap{padding:100px 0}
+.cta-box{background:radial-gradient(circle at 90% 10%,rgba(240,160,75,.28),transparent 46%),linear-gradient(135deg,var(--brown-800),var(--brown-900));border-radius:34px;padding:68px;color:var(--cream);position:relative;overflow:hidden;display:grid;grid-template-columns:1.25fr .75fr;gap:44px;align-items:center;box-shadow:var(--shadow-lg)}
+.cta-box::after{content:"";position:absolute;right:-40px;bottom:-70px;width:280px;height:280px;border-radius:50%;background:radial-gradient(circle,rgba(240,160,75,.25),transparent 70%);pointer-events:none}
+.cta-box h2{color:var(--cream);font-size:clamp(1.9rem,3.8vw,2.7rem);margin-bottom:14px}
+.cta-box p{color:rgba(253,248,240,.8);margin-bottom:32px;max-width:500px}
+.cta-actions{display:flex;flex-wrap:wrap;gap:14px}
+.cta-box .btn-outline{color:var(--cream);border-color:rgba(253,248,240,.35)}
+.cta-box .btn-outline:hover{background:var(--cream);color:var(--brown-900);border-color:var(--cream)}
+.cta-contact-list{display:grid;gap:14px;position:relative;z-index:2}
+.cta-contact-item{display:flex;align-items:center;gap:14px;background:rgba(253,248,240,.07);border:1px solid rgba(253,248,240,.16);border-radius:16px;padding:16px 18px;transition:.3s}
+.cta-contact-item:hover{background:rgba(253,248,240,.13);transform:translateX(5px)}
+.ci{width:44px;height:44px;border-radius:12px;background:rgba(240,160,75,.2);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0}
+.cta-contact-item b{display:block;font-size:.86rem}
+.cta-contact-item span{font-size:.76rem;color:rgba(253,248,240,.65)}
+
+
+/* ===== GALERI FOTO ===== */
+.gallery-section{
+  background:linear-gradient(180deg,var(--cream-2) 0%,var(--cream) 100%);
+  position:relative;
+  overflow:hidden;
+}
+.gallery-heading{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:38px;
+}
+.gallery-heading .section-sub{max-width:560px}
+.gallery-count{
+  flex-shrink:0;
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:9px 14px;
+  border:1px solid rgba(138,90,51,.2);
+  border-radius:999px;
+  color:var(--brown-700);
+  background:rgba(255,255,255,.55);
+  font-size:.78rem;
+  font-weight:700;
+}
+.gallery-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,340px));
+  justify-content:center;
+  gap:24px;
+}
+.gallery-card{
+  position:relative;
+  overflow:hidden;
+  border-radius:22px;
+  padding:10px;
+  background:rgba(255,255,255,.8);
+  border:1px solid rgba(138,90,51,.16);
+  box-shadow:var(--shadow-md);
+  cursor:zoom-in;
+  transition:transform .3s ease,box-shadow .3s ease;
+}
+.gallery-card:hover{
+  transform:translateY(-7px);
+  box-shadow:var(--shadow-lg);
+}
+.gallery-image-wrap{
+  position:relative;
+  aspect-ratio:3/4;
+  overflow:hidden;
+  border-radius:15px;
+  background:#ead9bf;
+}
+.gallery-image-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  object-position:center;
+  transition:transform .45s ease;
+}
+.gallery-card:hover .gallery-image-wrap img{transform:scale(1.035)}
+.gallery-zoom{
+  position:absolute;
+  right:13px;
+  bottom:13px;
+  width:42px;
+  height:42px;
+  display:grid;
+  place-items:center;
+  border-radius:50%;
+  color:white;
+  background:rgba(36,19,9,.78);
+  border:1px solid rgba(255,255,255,.35);
+  font-size:1.1rem;
+}
+.gallery-info{padding:15px 8px 8px}
+.gallery-info span{
+  display:block;
+  color:var(--amber-deep);
+  font-size:.68rem;
+  font-weight:800;
+  letter-spacing:1.5px;
+  text-transform:uppercase;
+  margin-bottom:5px;
+}
+.gallery-info h3{font-size:1.18rem;margin-bottom:5px}
+.gallery-info p{font-size:.84rem;color:var(--text-soft);line-height:1.6}
+@media(max-width:700px){
+  .gallery-heading{display:block}
+  .gallery-count{margin-top:18px}
+  .gallery-grid{grid-template-columns:minmax(0,1fr);max-width:420px;margin-inline:auto}
+}
+
+/* ===== FOOTER ===== */
+footer{background:var(--brown-900);color:rgba(253,248,240,.7);padding:70px 0 28px;border-top:1px solid rgba(253,248,240,.1);position:relative;overflow:hidden}
+footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;height:320px;border-radius:50%;background:radial-gradient(circle,rgba(240,160,75,.08),transparent 70%)}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:44px;margin-bottom:48px;position:relative;z-index:1}
+.foot-brand .logo{color:var(--cream);margin-bottom:18px}
+.foot-brand .logo small{color:rgba(253,248,240,.55)}
+.foot-brand p{font-size:.86rem;max-width:310px;line-height:1.75}
+.foot-col h4{color:var(--cream);font-family:'Plus Jakarta Sans',sans-serif;font-size:.8rem;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:20px;font-weight:700}
+.foot-col ul{display:grid;gap:11px}
+.foot-col a{font-size:.87rem;transition:.25s}
+.foot-col a:hover{color:var(--amber-light);padding-left:4px}
+.foot-bottom{border-top:1px solid rgba(253,248,240,.12);padding-top:24px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:.78rem;position:relative;z-index:1}
+
+/* ===== REVEAL ===== */
+.reveal{opacity:0;transform:translateY(38px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ===== ANIMASI SVG ===== */
+@keyframes floatLeaf {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(4deg); }
+}
+.leaf-anim { animation: floatLeaf 4s ease-in-out infinite; transform-origin: center; }
+@keyframes bubbleUp {
+  0% { transform: translateY(0) scale(1); opacity: 0.8; }
+  100% { transform: translateY(-40px) scale(1.5); opacity: 0; }
+}
+.bubble { animation: bubbleUp 2.5s ease-out infinite; }
+.bubble:nth-child(2) { animation-delay: 0.8s; }
+.bubble:nth-child(3) { animation-delay: 1.6s; }
+
+
+/* ===== LIGHTBOX / PREVIEW POSTER ===== */
+.image-lightbox{
+  position:fixed;
+  inset:0;
+  z-index:10000;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:24px;
+  background:rgba(12,16,11,.94);
+  backdrop-filter:blur(10px);
+  -webkit-backdrop-filter:blur(10px);
+}
+.image-lightbox.open{display:flex}
+.image-lightbox img{
+  display:block;
+  width:auto;
+  height:auto;
+  max-width:min(94vw,1200px);
+  max-height:92vh;
+  object-fit:contain;
+  border-radius:10px;
+  box-shadow:0 24px 80px rgba(0,0,0,.5);
+  animation:previewZoom .28s ease-out;
+  cursor:default;
+}
+.lightbox-close{
+  position:absolute;
+  top:18px;
+  right:22px;
+  width:48px;
+  height:48px;
+  display:grid;
+  place-items:center;
+  border:1px solid rgba(255,255,255,.25);
+  border-radius:50%;
+  background:rgba(255,255,255,.12);
+  color:#fff;
+  font-size:32px;
+  line-height:1;
+  cursor:pointer;
+  transition:background .2s,transform .2s;
+}
+.lightbox-close:hover{background:var(--amber);transform:rotate(90deg)}
+.lightbox-hint{
+  position:absolute;
+  bottom:16px;
+  left:50%;
+  transform:translateX(-50%);
+  color:rgba(255,255,255,.72);
+  font-size:.78rem;
+  text-align:center;
+}
+@keyframes previewZoom{
+  from{opacity:0;transform:scale(.94)}
+  to{opacity:1;transform:scale(1)}
+}
+@media(max-width:768px){
+  .image-lightbox{padding:12px}
+  .image-lightbox img{max-width:96vw;max-height:88vh;border-radius:7px}
+  .lightbox-close{top:10px;right:10px;width:42px;height:42px}
+  .lightbox-hint{bottom:8px;font-size:.68rem;width:90%}
+}
+
+/* ===== RESPONSIF ===== */
+@media(max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;gap:48px}
+  .hero-visual{max-width:470px;margin-inline:auto;width:100%}
+  .hero p.lead{max-width:100%}
+  .about-grid{grid-template-columns:1fr;gap:54px}
+  .about-visual{max-width:430px;margin-inline:auto}
+  .product-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:36px}
+  .process-grid::before{display:none}
+  .testi-grid{grid-template-columns:1fr}
+  .cta-box{grid-template-columns:1fr;padding:48px}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .fc-1{left:0}.fc-2{right:0}
+}
+@media(max-width:768px){
+  .nav-links{position:fixed;top:0;right:0;height:100vh;width:78%;max-width:320px;background:var(--cream);flex-direction:column;justify-content:center;gap:28px;padding:40px;box-shadow:-20px 0 50px rgba(0,0,0,.15);transform:translateX(110%);transition:transform .45s cubic-bezier(.16,1,.3,1);z-index:999}
+  .nav-links.open{transform:translateX(0)}
+  .nav-links a{font-size:1.05rem}
+  .menu-toggle{display:flex;z-index:1001}
+  .menu-toggle.open span:nth-child(1){transform:translateY(7.5px) rotate(45deg)}
+  .menu-toggle.open span:nth-child(2){opacity:0}
+  .menu-toggle.open span:nth-child(3){transform:translateY(-7.5px) rotate(-45deg)}
+  .section-pad{padding:70px 0}
+  .product-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:1fr}
+  .about-features{grid-template-columns:1fr}
+  .hero-stats{gap:24px}
+  .foot-grid{grid-template-columns:1fr;gap:32px}
+  .cta-box{padding:38px 26px}
+  .float-card{display:none}
+  .about-badge{width:104px;height:104px;font-size:.62rem}
+  .about-badge b{font-size:1.2rem}
+}
+</style>
 </head>
-<body class="text-gray-800 antialiased min-h-screen flex flex-col">
+<body>
 
-    <!-- Header / Navbar -->
-    <header class="bg-gradient-to-r from-teal-500 to-emerald-600 text-white shadow-md">
-        <div class="container mx-auto px-6 py-6 text-center md:text-left flex flex-col md:flex-row justify-between items-center">
-            <div>
-                <h1 class="text-3xl font-bold tracking-tight">Keluarga Cemara</h1>
-                <p class="text-teal-100 mt-1 text-sm">Deny_Nurul_Hashifah_Shofiyyah</p>
-            </div>
-            <div class="mt-4 md:mt-0">
-                <input type="text" id="searchInput" placeholder="Cari..." class="px-4 py-2 rounded-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-teal-300 w-full md:w-64 transition-all">
-            </div>
+<!-- NAVBAR -->
+<header id="header">
+  <div class="container nav">
+    <a href="#" class="logo">
+      <span class="logo-mark">🌴</span>
+      <span>Gula Lontar<small>Panyawakang · Gowa</small></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#tentang">Tentang</a>
+      <a href="#produk">Produk</a>
+      <a href="#proses">Proses</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#testimoni">Testimoni</a>
+      <a href="#pesan" class="btn btn-primary" style="color:var(--white)">Pesan Sekarang</a>
+    </nav>
+    <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="container hero-grid">
+    <div class="reveal">
+      <div class="hero-badge"><span class="dot"></span> Produk Unggulan Desa Taring</div>
+      <h1>Manis Alami dari <em>Pohon Lontar</em> Desa Taring</h1>
+      <p class="lead">Gula lontar asli hasil kearifan lokal Dusun Panyawakang — diolah secara higienis, alami tanpa pengawet, dan dikemas modern untuk cita rasa autentik Sulawesi Selatan.</p>
+      <div class="hero-cta">
+        <a href="#produk" class="btn btn-primary">Lihat Produk</a>
+        <a href="#tentang" class="btn btn-outline">Cerita Kami</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><b>100%</b><span>Nira Lontar Alami</span></div>
+        <div class="stat"><b>0%</b><span>Pengawet & Pewarna</span></div>
+        <div class="stat"><b>3+</b><span>Varian Produk</span></div>
+      </div>
+    </div>
+    <div class="hero-visual reveal">
+      <div class="hero-photo">
+        <!-- Poster produk: klik untuk melihat gambar secara utuh -->
+        <img
+          src="koma.jpeg"
+          class="art hero-poster"
+          alt="Poster Gula Lontar Panyawakang"
+          loading="eager"
+          onclick="openImagePreview(this.src)"
+          role="button"
+          tabindex="0"
+          aria-label="Perbesar poster Gula Lontar"
+          onkeydown="if(event.key === 'Enter' || event.key === ' '){event.preventDefault();openImagePreview(this.src)}"
+        >
+        <div class="photo-caption">
+          <b>Gula Lontar Panyawakang</b>
+          Kearifan lokal dari perbukitan Desa Taring, Kabupaten Gowa.
         </div>
-    </header>
+      </div>
+      <div class="float-card fc-1">
+        <span class="fc-icon">🍯</span>
+        <div>Rasa Autentik<small>Karamel alami</small></div>
+      </div>
+      <div class="float-card fc-2">
+        <span class="fc-icon">🌿</span>
+        <div>Tanpa Pengawet<small>100% alami</small></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Konten Utama (Grid Card) -->
-    <main class="container mx-auto px-6 py-10 flex-grow">
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="marquee">
+    <span>Kearifan Lokal</span><span>Nira Lontar Pilihan</span><span>Diproses Higienis</span>
+    <span>Kemasan Modern</span><span>Produk Unggulan Desa</span><span>Ramah Lingkungan</span>
+    <span>Kearifan Lokal</span><span>Nira Lontar Pilihan</span><span>Diproses Higienis</span>
+    <span>Kemasan Modern</span><span>Produk Unggulan Desa</span><span>Ramah Lingkungan</span>
+  </div>
+</div>
+
+<!-- TENTANG -->
+<section class="section-pad" id="tentang">
+  <div class="container about-grid">
+    <div class="about-visual reveal">
+      <!-- ILUSTRASI ANIMASI TUNGKU TRADISIONAL -->
+      <svg class="art" viewBox="0 0 400 410" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <linearGradient id="bg2" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#f2dcc0"/><stop offset="1" stop-color="#a67546"/></linearGradient>
+          <linearGradient id="wok" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#4a4a4a"/><stop offset="1" stop-color="#1c1c1c"/></linearGradient>
+          <radialGradient id="nira" cx=".5" cy=".4" r=".6"><stop offset="0" stop-color="#e8a94e"/><stop offset="1" stop-color="#a85a12"/></radialGradient>
+          <radialGradient id="fire" cx=".5" cy=".5" r=".5"><stop offset="0" stop-color="#ffd34d"/><stop offset=".5" stop-color="#f08a1a"/><stop offset="1" stop-color="#c24a00" stop-opacity="0"/></radialGradient>
+        </defs>
+        <rect width="400" height="410" fill="url(#bg2)"/>
         
-        <div class="mb-8 text-center">
-            <h2 class="text-2xl font-semibold text-gray-800">KUMPULAN DATA KELUARGA KAMI</h2>
-            <div class="h-1 w-20 bg-teal-500 mx-auto mt-2 rounded-full"></div>
+        <path d="M60 300 Q60 250 100 240 H300 Q340 250 340 300 L330 360 H70 Z" fill="#b08a5e"/>
+        <path d="M70 360 H330 L320 400 H80 Z" fill="#8a6a44"/>
+        <path d="M100 240 H300 L290 220 H110 Z" fill="#c79a6b"/>
+        
+        <!-- Api Beranimasi -->
+        <ellipse cx="200" cy="360" rx="90" ry="46" fill="url(#fire)"/>
+        <g fill="#ffd34d" class="bubble">
+          <path d="M170 360 Q180 320 190 340 Q195 310 205 335 Q215 310 225 342 Q235 320 240 360 Z"/>
+        </g>
+        
+        <!-- Wajan & Nira -->
+        <ellipse cx="200" cy="235" rx="135" ry="34" fill="url(#wok)"/>
+        <ellipse cx="200" cy="230" rx="120" ry="26" fill="url(#nira)"/>
+        
+        <!-- Gelembung Nira Beranimasi -->
+        <g fill="#ffd88a">
+          <circle cx="160" cy="228" r="4" class="bubble"/>
+          <circle cx="190" cy="222" r="5" class="bubble"/>
+          <circle cx="220" cy="230" r="4" class="bubble"/>
+          <circle cx="245" cy="224" r="3" class="bubble"/>
+        </g>
+      </svg>
+      <div class="about-badge"><b>2025</b>Produk Unggulan Desa</div>
+    </div>
+    <div class="about-content reveal">
+      <div class="eyebrow">Tentang Kami</div>
+      <h2 class="section-title">Dari Penyadap Nira, Untuk Kejayaan Desa</h2>
+      <p>Gula lontar kami berasal dari Dusun Panyawakang, Desa Taring, Kecamatan Biring Bulu, Kabupaten Gowa. Pohon lontar (<i>Borassus flabellifer</i>) telah lama tumbuh alami di perbukitan desa dan diwariskan turun-temurun sebagai sumber penghidupan masyarakat.</p>
+      <p>Kami berkomitmen mengangkat gula lontar dari produk komoditas menjadi <b>produk unggulan desa</b> yang bernilai tambah, higienis, dan berdaya saing — tanpa meninggalkan kearifan lokal di dalamnya.</p>
+      <div class="about-features">
+        <div class="feat"><span class="fi">🌱</span><div><b>Alami</b><span>Dari nira lontar segar</span></div></div>
+        <div class="feat"><span class="fi">🧼</span><div><b>Higienis</b><span>Standar sanitasi sederhana</span></div></div>
+        <div class="feat"><span class="fi">📦</span><div><b>Berkemasan</b><span>Label & merek desa</span></div></div>
+        <div class="feat"><span class="fi">🤝</span><div><b>Pemberdayaan</b><span>Menguatkan UMKM lokal</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUK -->
+<section class="section-pad products" id="produk">
+  <div class="container">
+    <div class="prod-head reveal">
+      <div>
+        <div class="eyebrow">Produk Kami</div>
+        <h2 class="section-title">Varian Gula Lontar Pilihan</h2>
+        <p class="section-sub">Setiap produk diolah dari nira lontar segar dengan standar mutu sederhana, menghasilkan rasa manis alami yang khas.</p>
+      </div>
+      <a href="#pesan" class="btn btn-primary">Pesan Semua</a>
+    </div>
+    <div class="product-grid">
+      
+      <!-- PRODUK 1 -->
+      <article class="product-card reveal">
+        <div class="pc-img c1"><span class="tag">Best Seller</span>
+          <svg class="art" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="g1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8a4a12"/><stop offset="1" stop-color="#3a1e08"/></linearGradient>
+            <radialGradient id="shine" cx=".35" cy=".3" r=".6"><stop offset="0" stop-color="#d98a3a" stop-opacity=".7"/><stop offset="1" stop-color="#8a4a12" stop-opacity="0"/></radialGradient></defs>
+            <rect width="400" height="320" fill="#f3d9b1"/>
+            <ellipse cx="200" cy="280" rx="150" ry="22" fill="#c79a6b" opacity=".5"/>
+            <g>
+              <path d="M110 210 Q110 150 150 140 H250 Q290 150 290 210 L280 260 H120 Z" fill="url(#g1)"/>
+              <path d="M110 210 Q110 150 150 140 H250 Q290 150 290 210" fill="url(#shine)"/>
+              <ellipse cx="200" cy="150" rx="70" ry="18" fill="#5a2e0c"/>
+              <ellipse cx="200" cy="148" rx="60" ry="13" fill="#7a3e12"/>
+            </g>
+            <g transform="translate(60,120) rotate(-8)">
+              <path d="M0 40 Q0 0 30 0 H90 Q120 0 120 40 L114 80 H6 Z" fill="url(#g1)"/>
+              <ellipse cx="60" cy="6" rx="30" ry="9" fill="#5a2e0c"/>
+            </g>
+            <g transform="translate(240,110) rotate(10)">
+              <path d="M0 40 Q0 0 30 0 H90 Q120 0 120 40 L114 80 H6 Z" fill="url(#g1)"/>
+              <ellipse cx="60" cy="6" rx="30" ry="9" fill="#5a2e0c"/>
+            </g>
+          </svg>
         </div>
-
-        <!-- Container Grid untuk Card -->
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="cardContainer">
-            
-            <!-- Card 1 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col" data-title="bali">
-                <div class="relative flex items-center justify-center h-56 bg-teal-50 group-hover:bg-teal-100 transition-colors duration-300">
-                    <!-- Ikon Sun/Pulau -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-teal-500 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
-  <path fill-rule="evenodd" d="M22.5 9.75h-21v7.5a3 3 0 0 0 3 3h15a3 3 0 0 0 3-3v-7.5Zm-18 3.75a.75.75 0 0 1 .75-.75h6a.75.75 0 0 1 0 1.5h-6a.75.75 0 0 1-.75-.75Zm.75 2.25a.75.75 0 0 0 0 1.5h3a.75.75 0 0 0 0-1.5h-3Z" />
-                    </svg>
-                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-teal-600 shadow-sm">
-                        Keuangan
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-teal-600 transition-colors">CASHFLOW</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">pencatatan dan pengelolaan seluruh arus kas (uang masuk dan uang keluar)</p>
-                    <button
-    onclick="window.location.href='https://script.google.com/macros/s/AKfycbzaMbt0glJHniRLNPmUztH8Rl54x-RoJZKk5fJsL9REuc08BFMn-fvHwc6_kvWYuMAu/exec'"
-    class="w-full bg-teal-50 hover:bg-teal-500 text-teal-600 hover:text-white border border-teal-200 hover:border-transparent font-medium py-2.5 px-4 rounded-xl transition-colors duration-300">
-    Lihat Detail
-</button>
-                </div>
-            </div>
-
-            <!-- Card 2 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col" data-title="bromo">
-                <div class="relative flex items-center justify-center h-56 bg-amber-50 group-hover:bg-amber-100 transition-colors duration-300">
-                    <!-- Ikon Pegunungan / Lanskap -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-amber-500 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-amber-600 shadow-sm">
-                        Foto
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-amber-600 transition-colors">Foto Keluarga</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">Kumpulan foto yang mengabadikan setiap momen kebersamaan, kebahagiaan, dan perjalanan indah keluarga kami</p>
-                    <button
-    onclick="window.location.href='#'"
-    class="w-full bg-teal-50 hover:bg-teal-500 text-teal-600 hover:text-white border border-teal-200 hover:border-transparent font-medium py-2.5 px-4 rounded-xl transition-colors duration-300">
-    Lihat Detail
-</button>
-                </div>
-            </div>
-
-            <!-- Card 3 -->
-            <div class="bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden group flex flex-col" data-title="raja ampat">
-                <div class="relative flex items-center justify-center h-56 bg-blue-50 group-hover:bg-blue-100 transition-colors duration-300">
-                    <!-- Ikon Perahu / Bahari -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-24 w-24 text-blue-500 group-hover:scale-110 transition-transform duration-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
-                        <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 3.75a3 3 0 0 0-3 3v.75h21v-.75a3 3 0 0 0-3-3h-15Z" />
-  <path fill-rule="evenodd" d="M12 6.042A8.967 8.967 0 0 0 6 3.75c-1.052 0-2.062.18-3 .512v14.25A8.987 8.987 0 0 1 6 18c2.305 0 4.408.867 6 2.292m0-14.25a8.966 8.966 0 0 1 6-2.292c1.052 0 2.062.18 3 .512v14.25A8.987 8.987 0 0 0 18 18a8.967 8.967 0 0 0-6 2.292m0-14.25v14.25" />
-                    </svg>
-                    <div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-semibold text-blue-600 shadow-sm">
-                        Tulisan
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <h3 class="text-xl font-bold mb-2 text-gray-900 group-hover:text-blue-600 transition-colors">Coming Soon</h3>
-                    <p class="text-gray-600 text-sm mb-6 flex-grow leading-relaxed">Masih belum terpikirkan - mungkin kumpulan tulisan istri heheheh</p>
-                    <button
-    onclick="window.location.href='#'"
-    class="w-full bg-teal-50 hover:bg-teal-500 text-teal-600 hover:text-white border border-teal-200 hover:border-transparent font-medium py-2.5 px-4 rounded-xl transition-colors duration-300">
-    Lihat Detail
-</button>
-                </div>
-            </div>
-
+        <div class="pc-body">
+          <h3>Gula Lontar Cetak</h3>
+          <p>Gula cetak tradisional dengan cita rasa karamel khas. Cocok untuk kopi, teh, dan masakan rumahan.</p>
+          <div class="pc-meta">
+            <div class="price">Rp 15.000<small>per 250 gram</small></div>
+            <a href="#pesan" class="order-link">Pesan →</a>
+          </div>
         </div>
-    </main>
+      </article>
+      
+      <!-- PRODUK 2 -->
+      <article class="product-card reveal">
+        <div class="pc-img c2"><span class="tag">Baru</span>
+          <svg class="art" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="jar" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#e8c9a0"/><stop offset="1" stop-color="#b08050"/></linearGradient>
+            <linearGradient id="powder" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#a85a12"/><stop offset="1" stop-color="#6e3a0a"/></linearGradient></defs>
+            <rect width="400" height="320" fill="#e8c9a0"/>
+            <ellipse cx="200" cy="290" rx="140" ry="20" fill="#a67546" opacity=".45"/>
+            <g>
+              <path d="M140 90 Q140 70 160 70 H240 Q260 70 260 90 L250 270 Q250 285 235 285 H165 Q150 285 150 270 Z" fill="url(#jar)"/>
+              <path d="M150 120 H250 L246 200 H154 Z" fill="url(#powder)"/>
+              <rect x="140" y="60" width="120" height="20" rx="8" fill="#8a5a33"/>
+              <rect x="160" y="170" width="80" height="55" rx="8" fill="#fdf8f0" opacity=".92"/>
+              <text x="200" y="192" text-anchor="middle" font-family="serif" font-size="12" font-weight="700" fill="#5a3a22">GULA</text>
+              <text x="200" y="210" text-anchor="middle" font-family="serif" font-size="12" font-weight="700" fill="#5a3a22">LONTAR</text>
+            </g>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <h3>Gula Lontar Bubuk</h3>
+          <p>Praktis dan mudah larut. Ideal untuk minuman, kue, dan campuran bahan masakan modern.</p>
+          <div class="pc-meta">
+            <div class="price">Rp 18.000<small>per 200 gram</small></div>
+            <a href="#pesan" class="order-link">Pesan →</a>
+          </div>
+        </div>
+      </article>
+      
+      <!-- PRODUK 3 -->
+      <article class="product-card reveal">
+        <div class="pc-img c3"><span class="tag">Premium</span>
+          <svg class="art" viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+            <defs><linearGradient id="box" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7a9b62"/><stop offset="1" stop-color="#3a5328"/></linearGradient>
+            <linearGradient id="ribbon" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#f0c896"/><stop offset="1" stop-color="#d97b29"/></linearGradient></defs>
+            <rect width="400" height="320" fill="#d7e0c5"/>
+            <ellipse cx="200" cy="285" rx="150" ry="20" fill="#4a6b3a" opacity=".35"/>
+            <g>
+              <path d="M100 150 L200 120 L300 150 L300 260 L200 290 L100 260 Z" fill="url(#box)"/>
+              <path d="M100 150 L200 180 L300 150 L200 120 Z" fill="#8aab72"/>
+              <path d="M200 180 V290" stroke="#2c3f1e" stroke-width="2" opacity=".4"/>
+              <path d="M100 150 L200 180 L300 150" stroke="#2c3f1e" stroke-width="2" fill="none" opacity=".4"/>
+              <path d="M140 138 L140 250 M260 138 L260 250" stroke="url(#ribbon)" stroke-width="10" opacity=".9"/>
+              <path d="M200 180 L200 290" stroke="url(#ribbon)" stroke-width="10" opacity=".9"/>
+              <g transform="translate(200,150)">
+                <circle r="22" fill="#fdf8f0"/>
+                <text y="5" text-anchor="middle" font-family="serif" font-size="11" font-weight="700" fill="#3a5328">🍯</text>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <div class="pc-body">
+          <h3>Paket Oleh-oleh</h3>
+          <p>Kemasan eksklusif berisi gula lontar cetak & bubuk. Cocok sebagai buah tangan khas Gowa.</p>
+          <div class="pc-meta">
+            <div class="price">Rp 45.000<small>per paket</small></div>
+            <a href="#pesan" class="order-link">Pesan →</a>
+          </div>
+        </div>
+      </article>
+      
+    </div>
+  </div>
+</section>
 
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-gray-400 py-8 text-center">
-        <p>&copy; 2026 Hasfhifah Adhwa Hermawan</p>
-    </footer>
+<!-- PROSES -->
+<section class="section-pad" id="proses">
+  <div class="container">
+    <div class="reveal" style="text-align:center;max-width:660px;margin-inline:auto">
+      <div class="eyebrow" style="justify-content:center">Proses Produksi</div>
+      <h2 class="section-title">Dari Pohon ke Meja Anda</h2>
+      <p class="section-sub" style="margin-inline:auto">Empat tahap sederhana yang menjaga kualitas dan kearifan lokal di setiap butir gula lontar.</p>
+    </div>
+    <div class="process-grid">
+      <div class="step reveal"><div class="step-num">🌴</div><h4>Penyadapan Nira</h4><p>Nira diambil langsung dari pohon lontar pilihan setiap pagi.</p></div>
+      <div class="step reveal"><div class="step-num">🔥</div><h4>Pemasakan</h4><p>Dimasak dengan tungku tradisional dan kontrol suhu sederhana.</p></div>
+      <div class="step reveal"><div class="step-num">🧊</div><h4>Pencetakan</h4><p>Dicetak higienis sesuai standar mutu dan berat yang seragam.</p></div>
+      <div class="step reveal"><div class="step-num">📦</div><h4>Pengemasan</h4><p>Dikemas dengan label, merek, dan informasi produk yang jelas.</p></div>
+    </div>
+  </div>
+</section>
 
-    <!-- Wadah untuk Notifikasi Custom (sebagai pengganti alert) -->
-    <div id="toastContainer" class="fixed bottom-5 right-5 z-50 flex flex-col gap-3"></div>
 
-    <script>
-        // Logika Sederhana untuk Fitur Pencarian Card
-        const searchInput = document.getElementById('searchInput');
-        const cards = document.querySelectorAll('#cardContainer > div');
+<!-- GALERI -->
+<section class="section-pad gallery-section" id="galeri">
+  <div class="container">
+    <div class="gallery-heading reveal">
+      <div>
+        <div class="eyebrow">Galeri Kami</div>
+        <h2 class="section-title">Cerita Manis dalam Setiap Karya</h2>
+        <p class="section-sub">Lihat lebih dekat produk Gula Lontar Panyawakkang. Galeri ini akan terus diperbarui dengan dokumentasi produk dan kegiatan produksi kami.</p>
+      </div>
+      <div class="gallery-count">📷 1 Foto Koleksi</div>
+    </div>
 
-        searchInput.addEventListener('input', function(e) {
-            const searchTerm = e.target.value.toLowerCase();
-            
-            cards.forEach(card => {
-                const title = card.getAttribute('data-title');
-                if (title.includes(searchTerm)) {
-                    card.style.display = 'flex';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
+    <div class="gallery-grid">
+      <article class="gallery-card reveal"
+        onclick="openImagePreview('koma.jpeg')"
+        role="button"
+        tabindex="0"
+        aria-label="Perbesar poster Gula Lontar Panyawakkang"
+        onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();openImagePreview('koma.jpeg')}">
+        <div class="gallery-image-wrap">
+          <img src="koma.jpeg" alt="Poster produk Gula Lontar Panyawakkang" loading="lazy">
+          <span class="gallery-zoom" aria-hidden="true">⌕</span>
+        </div>
+        <div class="gallery-info">
+          <span>Produk Unggulan</span>
+          <h3>Gula Lontar Panyawakkang</h3>
+          <p>Manis alami dari nira lontar pilihan, diolah dengan kearifan lokal Desa Taring.</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
 
-        // Fungsi untuk menampilkan notifikasi cantik
-        function showNotification(message) {
-            const container = document.getElementById('toastContainer');
-            
-            const toast = document.createElement('div');
-            toast.className = 'bg-gray-800 text-white px-6 py-3 rounded-lg shadow-lg flex items-center gap-3 toast-enter max-w-sm';
-            
-            // Ikon Info
-            toast.innerHTML = `
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-teal-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                </svg>
-                <span class="text-sm font-medium">${message}</span>
-            `;
-            
-            container.appendChild(toast);
+<!-- TESTIMONI -->
+<section class="section-pad testi" id="testimoni">
+  <div class="container">
+    <div class="reveal">
+      <div class="eyebrow" style="color:var(--amber-light)">Testimoni</div>
+      <h2 class="section-title">Kata Mereka Tentang Gula Lontar Kami</h2>
+      <p class="section-sub">Kepercayaan pelanggan adalah motivasi kami untuk terus berkembang.</p>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Rasanya khas dan alami. Sudah lama cari gula lontar seperti ini, akhirnya ketemu yang kemasannya rapi dan higienis."</p>
+        <div class="testi-person"><span class="avatar">AR</span><div><b>Andi Rahma</b><span>Pelanggan · Makassar</span></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Cocok untuk oleh-oleh. Kemasannya menarik, ada labelnya, jadi terasa lebih premium dibanding gula pasar biasa."</p>
+        <div class="testi-person"><span class="avatar">SH</span><div><b>Sitti Hajar</b><span>Pelanggan · Gowa</span></div></div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Sebagai pelaku UMKM kue, gula lontar bubuknya sangat praktis. Aroma dan rasa manisnya konsisten."</p>
+        <div class="testi-person"><span class="avatar">NF</span><div><b>Nur Fadilah</b><span>UMKM Kue · Sungguminasa</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
 
-            // Hilangkan notifikasi setelah 3 detik
-            setTimeout(() => {
-                toast.classList.replace('toast-enter', 'toast-exit');
-                setTimeout(() => {
-                    toast.remove();
-                }, 300); // Tunggu animasi keluar selesai
-            }, 3000);
-        }
-    </script>
+<!-- CTA -->
+<section class="cta-wrap" id="pesan">
+  <div class="container">
+    <div class="cta-box reveal">
+      <div>
+        <h2>Siap Coba Manisnya Gula Lontar Desa Taring?</h2>
+        <p>Pesan langsung melalui WhatsApp atau kunjungi kami di Dusun Panyawakang. Kami siap melayani pesanan retail maupun grosir.</p>
+        <div class="cta-actions">
+          <a href="https://wa.me/628783305693?text=Halo%20Putri%2C%20saya%20ingin%20memesan%20Gula%20Lontar%20Panyawakang" target="_blank" rel="noopener" class="btn btn-primary">💬 Pesan via WhatsApp (Putri)</a>
+          <a href="#produk" class="btn btn-outline">Lihat Katalog</a>
+        </div>
+      </div>
+      <div class="cta-contact-list">
+        <div class="cta-contact-item"><span class="ci">📍</span><div><b>Lokasi</b><span>Dusun Panyawakang, Desa Taring, Biring Bulu, Gowa</span></div></div>
+        <div class="cta-contact-item"><span class="ci">📱</span><div><b>WhatsApp (Putri)</b><span>0878-8330-5693</span></div></div>
+        <div class="cta-contact-item"><span class="ci">📸</span><div><b>Instagram</b><span>@Gulalontarpanyawakkang</span></div></div>
+        <div class="cta-contact-item"><span class="ci">🎵</span><div><b>TikTok</b><span>Gula Lontar Panyawakkang</span></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a href="#" class="logo">
+          <span class="logo-mark">🌴</span>
+          <span>Gula Lontar<small>Panyawakang · Gowa</small></span>
+        </a>
+        <p>Produk unggulan Desa Taring yang diolah dari nira lontar alami dengan kearifan lokal dan standar higienis.</p>
+      </div>
+      <div class="foot-col"><h4>Navigasi</h4><ul><li><a href="#tentang">Tentang</a></li><li><a href="#produk">Produk</a></li><li><a href="#proses">Proses</a></li><li><a href="#galeri">Galeri</a></li><li><a href="#testimoni">Testimoni</a></li></ul></div>
+      <div class="foot-col"><h4>Produk</h4><ul><li><a href="#produk">Gula Cetak</a></li><li><a href="#produk">Gula Bubuk</a></li><li><a href="#produk">Paket Oleh-oleh</a></li></ul></div>
+      <div class="foot-col"><h4>Kontak</h4><ul><li><a href="https://wa.me/628783305693" target="_blank" rel="noopener">WhatsApp Putri</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li><li><a href="#">TikTok</a></li></ul></div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 Gula Lontar Panyawakang. Seluruh hak cipta dilindungi.</span>
+      <span>Dibuat untuk pemberdayaan UMKM Desa Taring 🌿</span>
+    </div>
+  </div>
+</footer>
+
+
+<!-- LIGHTBOX: poster tampil utuh saat diklik -->
+<div
+  class="image-lightbox"
+  id="imageLightbox"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Pratinjau poster Gula Lontar"
+  onclick="if(event.target === this) closeImagePreview()"
+>
+  <button class="lightbox-close" type="button" aria-label="Tutup gambar" onclick="closeImagePreview()">×</button>
+  <img id="lightboxImage" src="" alt="Poster Gula Lontar Panyawakkang ukuran penuh">
+  <div class="lightbox-hint">Klik area gelap atau tekan ESC untuk menutup</div>
+</div>
+
+<script>
+
+function openImagePreview(src) {
+  const lightbox = document.getElementById('imageLightbox');
+  const previewImage = document.getElementById('lightboxImage');
+  previewImage.src = src;
+  lightbox.classList.add('open');
+  lightbox.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeImagePreview() {
+  const lightbox = document.getElementById('imageLightbox');
+  lightbox.classList.remove('open');
+  lightbox.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') closeImagePreview();
+});
+
+const header = document.getElementById('header');
+window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
+
+const menuToggle = document.getElementById('menuToggle');
+const navLinks = document.getElementById('navLinks');
+menuToggle.addEventListener('click', () => {
+  menuToggle.classList.toggle('open');
+  navLinks.classList.toggle('open');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  menuToggle.classList.remove('open');
+  navLinks.classList.remove('open');
+}));
+
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
 </body>
-</html>
+</html><script async src="/.netlify/scripts/hud?variant=public" data-nf-variant="public" data-netlify-site-id="ce2d053c-ef07-476f-9bd2-e590d2d166b2" data-app-host="app.netlify.com" data-account-tier="free"></script>

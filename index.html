@@ -176,8 +176,16 @@ header.scrolled{background:rgba(253,248,240,.92);backdrop-filter:blur(16px);box-
 .testi::before{content:"";position:absolute;top:-80px;right:5%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(240,160,75,.14),transparent 70%)}
 .testi .section-title{color:var(--cream)}
 .testi .section-sub{color:rgba(253,248,240,.72)}
-.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:56px}
-.testi-card{background:rgba(253,248,240,.06);border:1px solid rgba(253,248,240,.14);border-radius:var(--radius);padding:32px;backdrop-filter:blur(8px);transition:.35s;position:relative}
+.testi-slider-wrap{position:relative;margin-top:56px;padding:0 52px}
+.testi-viewport{overflow:hidden;width:100%}
+.testi-grid{display:flex;gap:24px;margin:0;transition:transform .45s ease;will-change:transform}
+.testi-card{box-sizing:border-box;flex:0 0 calc((100% - 48px)/3);min-width:0;background:rgba(253,248,240,.06);border:1px solid rgba(253,248,240,.14);border-radius:var(--radius);padding:32px;backdrop-filter:blur(8px);transition:background .35s,border-color .35s;position:relative}
+
+.testi-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:5;width:42px;height:42px;border:1px solid rgba(253,248,240,.35);border-radius:50%;background:var(--amber);color:var(--brown-900);font-size:1.8rem;line-height:1;display:grid;place-items:center;cursor:pointer;box-shadow:0 5px 16px rgba(0,0,0,.2);transition:.25s}
+.testi-arrow:hover{background:var(--amber-light);transform:translateY(-50%) scale(1.08)}
+.testi-prev{left:0}
+.testi-next{right:0}
+.testi-arrow:disabled{opacity:.35;cursor:not-allowed}
 .testi-card:hover{transform:translateY(-6px);background:rgba(253,248,240,.1);border-color:rgba(240,160,75,.35)}
 .testi-stars{color:var(--amber-light);margin-bottom:16px;letter-spacing:3px;font-size:.95rem}
 .testi-card p{font-size:.95rem;color:rgba(253,248,240,.9);margin-bottom:24px;font-style:italic}
@@ -544,7 +552,7 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
   .product-grid{grid-template-columns:repeat(2,1fr)}
   .process-grid{grid-template-columns:repeat(2,1fr);gap:36px}
   .process-grid::before{display:none}
-  .testi-grid{grid-template-columns:1fr}
+  .testi-card{flex-basis:calc((100% - 24px)/2)}
   .cta-box{grid-template-columns:1fr;padding:48px}
   .foot-grid{grid-template-columns:1fr 1fr}
   .fc-1{left:0}.fc-2{right:0}
@@ -567,6 +575,11 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
   .float-card{display:none}
   .about-badge{width:104px;height:104px;font-size:.62rem}
   .about-badge b{font-size:1.2rem}
+}
+
+@media(max-width:600px){
+  .testi-slider-wrap{padding:0 38px}
+  .testi-card{flex-basis:100%;padding:25px}
 }
 </style>
 </head>
@@ -938,7 +951,7 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
 </section>
 
 
-<!-- Galeri foto sudah dipindahkan ke bagian utama (hero) -->\n\n<!-- TESTIMONI -->
+<!-- Galeri foto sudah dipindahkan ke bagian utama (hero) --><!-- TESTIMONI -->
 <section class="section-pad testi" id="testimoni">
   <div class="container">
     <div class="reveal">
@@ -946,22 +959,53 @@ footer::before{content:"";position:absolute;top:-120px;left:-80px;width:320px;he
       <h2 class="section-title">Kata Mereka Tentang Gula Lontar Kami</h2>
       <p class="section-sub">Kepercayaan pelanggan adalah motivasi kami untuk terus berkembang.</p>
     </div>
-    <div class="testi-grid">
+    <div class="testi-slider-wrap">
+      <button class="testi-arrow testi-prev" type="button" onclick="geserTestimoni(-1)" aria-label="Testimoni sebelumnya">‹</button>
+      <div class="testi-viewport">
+        <div class="testi-grid" id="testiSlider">
+      <!-- TESTIMONI 1 -->
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
         <p>"Rasanya khas dan alami. Sudah lama cari gula lontar seperti ini, akhirnya ketemu yang kemasannya rapi dan higienis."</p>
         <div class="testi-person"><span class="avatar">AR</span><div><b>Andi Rahma</b><span>Pelanggan · Makassar</span></div></div>
       </div>
+
+      <!-- TESTIMONI 2 -->
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
         <p>"Cocok untuk oleh-oleh. Kemasannya menarik, ada labelnya, jadi terasa lebih premium dibanding gula pasar biasa."</p>
         <div class="testi-person"><span class="avatar">SH</span><div><b>Sitti Hajar</b><span>Pelanggan · Gowa</span></div></div>
       </div>
+
+      <!-- TESTIMONI 3 -->
       <div class="testi-card reveal">
         <div class="testi-stars">★★★★★</div>
         <p>"Sebagai pelaku UMKM kue, gula lontar bubuknya sangat praktis. Aroma dan rasa manisnya konsisten."</p>
         <div class="testi-person"><span class="avatar">NF</span><div><b>Nur Fadilah</b><span>UMKM Kue · Sungguminasa</span></div></div>
       </div>
+
+      <!-- TESTIMONI 4 -->
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Rasa gulanya khas, mengingatkan sama gula tradisional yang biasa dipakai di kampung. Bagus sekali, apalagi sekarang sudah ada kemasan yang praktis."</p>
+        <div class="testi-person"><span class="avatar">H</span><div><b>Hasniwati</b><span>IRT · Gowa</span></div></div>
+      </div>
+
+      <!-- TESTIMONI 5 -->
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Bagus sekali untuk oleh-oleh. Kemasannya menarik, produknya juga punya ciri khas tersendiri. Semoga usahanya semakin berkembang."</p>
+        <div class="testi-person"><span class="avatar">DS</span><div><b>Dewi Sartika</b><span>Pegawai · Takalar</span></div></div>
+      </div>
+
+      <!-- TESTIMONI 6 -->
+      <div class="testi-card reveal">
+        <div class="testi-stars">★★★★★</div>
+        <p>"Saya suka karena pilihan produknya ada gula padat, bubuk, dan cair. Jadi bisa disesuaikan dengan kebutuhan. Praktis dan rasanya enak."</p>
+        <div class="testi-person"><span class="avatar">H</span><div><b>Heriyanto</b><span>Somba Opu</span></div></div>
+        </div>
+      </div>
+      <button class="testi-arrow testi-next" type="button" onclick="geserTestimoni(1)" aria-label="Testimoni berikutnya">›</button>
     </div>
   </div>
 </section>
@@ -1161,6 +1205,44 @@ if (gallerySlides && galleryTotal > 0) {
   });
 }
 
+
+
+// Slider testimoni: tampilkan 3 kartu sekaligus pada layar besar.
+const testiSlider = document.getElementById('testiSlider');
+const testiCards = testiSlider ? Array.from(testiSlider.querySelectorAll('.testi-card')) : [];
+let testiIndex = 0;
+
+function jumlahTestimoniTerlihat() {
+  if (window.innerWidth <= 600) return 1;
+  if (window.innerWidth <= 900) return 2;
+  return 3;
+}
+
+function perbaruiSliderTestimoni() {
+  if (!testiSlider || !testiCards.length) return;
+  const visible = jumlahTestimoniTerlihat();
+  const maxIndex = Math.max(0, testiCards.length - visible);
+  testiIndex = Math.min(Math.max(testiIndex, 0), maxIndex);
+
+  const gap = 24;
+  const cardWidth = testiCards[0].getBoundingClientRect().width;
+  testiSlider.style.transform = `translateX(-${testiIndex * (cardWidth + gap)}px)`;
+
+  const prev = document.querySelector('.testi-prev');
+  const next = document.querySelector('.testi-next');
+  if (prev) prev.disabled = testiIndex === 0;
+  if (next) next.disabled = testiIndex >= maxIndex;
+}
+
+function geserTestimoni(arah) {
+  if (!testiCards.length) return;
+  testiIndex += arah;
+  perbaruiSliderTestimoni();
+}
+window.geserTestimoni = geserTestimoni;
+
+window.addEventListener('resize', perbaruiSliderTestimoni);
+perbaruiSliderTestimoni();
 
 const header = document.getElementById('header');
 window.addEventListener('scroll', () => header.classList.toggle('scrolled', window.scrollY > 40));
